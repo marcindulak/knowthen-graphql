@@ -75,3 +75,8 @@ dist
 # temporary files
 old
 *~
+
+# bin
+/bin/*
+!/bin/.gitkeep
+!/bin/*.sh
