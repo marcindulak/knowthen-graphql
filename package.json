@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "npm-check-updates": "^14.1.1"
+  }
+}

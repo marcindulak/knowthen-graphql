@@ -151,11 +151,15 @@ Setup:
    ```
 
 3. Install [vscode](https://code.visualstudio.com/download).
- 
+
 4. Install and enable pre-commit
    ```sh
    pip install pre-commit
    pre-commit install
    ```
-
-
+5. Keep packages up to date
+   ```sh
+   # Make sure package.json is using the latest components
+   npm install npm-check-updates --include=dev
+   ../node_modules/.bin/ncu -u
+   ```
