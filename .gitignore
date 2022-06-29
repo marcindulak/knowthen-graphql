@@ -70,5 +70,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-.envrc
 dist
+
+# temporary files
+old
+*~
