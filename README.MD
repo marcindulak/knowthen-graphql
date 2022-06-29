@@ -131,3 +131,31 @@ If you’ve got questions, or you’re stuck, you can either:
 **​Why should I take this course from you?**
 
 ​My courses are different from most Instructors.​ I keep things as practical as possible, I try to provide good visuals and animations to help you learn as fast as possible. I put hundreds of hours into making these course, so they are well thought out and to the point... and most importantly, I don't want to waste your time.
+
+# Personal notes
+
+Setup:
+
+1. Install node
+   Note that it is only necessary when developing outside of the devcontainer.
+   ```sh
+   curl -sLo bin/nvm.sh https://github.com/nvm-sh/nvm/raw/master/nvm.sh
+   source bin/nvm.sh
+   nvm install --lts
+   nvm use --lts
+   ```
+
+2. Test the setup
+   ```sh
+   node -e "console.log(process.version)" | grep $(node --version)
+   ```
+
+3. Install [vscode](https://code.visualstudio.com/download).
+ 
+4. Install and enable pre-commit
+   ```sh
+   pip install pre-commit
+   pre-commit install
+   ```
+
+
