@@ -1,8 +1,10 @@
-import { Pool } from 'pg';
+import pkg from 'pg';
+const { Pool } = pkg;
 
 const pool = new Pool({
-  host: 'localhost',
+  host: 'database',
   database: 'hackerbook',
+  user: 'postgres'
 });
 
 async function query(sql, params) {

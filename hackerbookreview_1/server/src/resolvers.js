@@ -1,8 +1,8 @@
-import { allBooks } from './book';
+import { allBooks } from './book.js';
 
 const resolvers = {
   Book: {
-    
+
   },
   Query: {
     books: () => {

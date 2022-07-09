@@ -1,6 +1,6 @@
-import query from './db';
+import query from './db.js';
 
-export async function allBooks() { 
+export async function allBooks() {
   const sql = `
   select * from hb.book;
   `;
