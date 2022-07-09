@@ -1,0 +1,67 @@
+version: "3.7"
+
+services:
+  web:
+    container_name: project_knowthen_graphql_web
+    image: project_knowthen_graphql_web
+    user: node
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/app
+      - web_node_modules:/app/node_modules
+    networks:
+      - web
+      - server
+
+  server:
+    container_name: project_knowthen_graphql_server
+    image: project_knowthen_graphql_server
+    user: node
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./server:/app
+      - server_node_modules:/app/node_modules
+    networks:
+      - web
+      - server
+
+  database:
+    container_name: project_knowthen_graphql_database
+    image: postgres:14
+    user: postgres
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - database_data:/var/lib/postgresql/data/
+    command: -p 5432
+    networks:
+      - server
+
+volumes:
+  web_node_modules:
+    driver: local
+    name: project_knowthen_graphql_web_node_modules
+  server_node_modules:
+    driver: local
+    name: project_knowthen_graphql_server_node_modules
+  database_data:
+    driver: local
+    name: project_knowthen_graphql_database_data
+
+networks:
+  web:
+    driver: bridge
+    name: project_knowthen_graphql_web
+  server:
+    driver: bridge
+    name: project_knowthen_graphql_server

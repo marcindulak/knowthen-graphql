@@ -161,5 +161,21 @@ Setup:
    ```sh
    # Make sure package.json is using the latest components
    npm install npm-check-updates --include=dev
+   cd helloworld  # or other directory
    ../node_modules/.bin/ncu -u
+   rm -f package-lock.json
+   npm install
+   ```
+
+6. Modify `/etc/hosts` to refer to the services by name
+   ```sh
+   sudo sed -i "s/127\.0\.0\.1.*$/& database server web/" /etc/hosts
+   ```
+7. Install https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
+
+8. When working with the *hackerbookreview* exercises, use docker-compose
+   to start the components
+   ```sh
+   cd hackerbookreview
+   bash ../bin/project-restart.sh
    ```
