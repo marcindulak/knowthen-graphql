@@ -33,3 +33,10 @@ You can run the app with the following command: `node index.js " query { hello n
 ## Answer
 
 You can see how I solved this by looking at the `index.js` file, in the `helloworld_completed` folder.
+
+# Test
+
+```sh
+npm install
+node index.js "{ hello name }"
+```
