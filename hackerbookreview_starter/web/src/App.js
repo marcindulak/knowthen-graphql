@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './Home';
@@ -11,12 +11,12 @@ const App = props => (
   <Router>
     <div className="mw8 center avenir">
       <Header {...props} />
-      <Switch>
+      <Routes>
         <Route exact path="/" component={Home} />
         <Route exact path="/book/:id/review" component={BookReview} />
         <Route exact path="/book/:id" component={Book} />
         <Route exact path="/add" component={AddBook} />
-      </Switch>
+      </Routes>
       <Footer {...props} />
     </div>
   </Router>
