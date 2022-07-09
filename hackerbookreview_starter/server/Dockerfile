@@ -10,6 +10,7 @@ RUN if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
         && usermod --uid $USER_UID --gid $USER_GID node \
         && chown -R $USER_UID:$USER_GID /home/node; \
     fi
+# Install psql to be used by npm run. This should not be done in a production image.
 RUN apk --no-cache add postgresql-client
 
 RUN mkdir /app && chown node:node /app
