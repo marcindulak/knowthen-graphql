@@ -1,4 +1,4 @@
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema } from '@graphql-tools/schema';
 import { graphql } from 'graphql';
 
 const typeDefs = `
@@ -22,6 +22,6 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const query = process.argv[2];
 
-graphql(schema, query).then(result => {
+graphql({schema: schema, source: query}).then(result => {
   console.log(JSON.stringify(result, null, 2));
 });
