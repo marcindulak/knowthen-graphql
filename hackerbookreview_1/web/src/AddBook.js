@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { BookSearchForm, BookSearchResults } from './components/Book';
 import Error from './components/Error';
 import data from './data';
@@ -41,7 +41,7 @@ class AddBook extends Component {
     const { redirectBookId } = this.state;
     return (
       <div className="cf black-80 mv2">
-        {redirectBookId && <Redirect to={`/book/${redirectBookId}`} />}
+        {redirectBookId && <Navigate to={`/book/${redirectBookId}`} />}
         <Error errors={this.state.errors} />
         <BookSearchForm
           search={this.search}
