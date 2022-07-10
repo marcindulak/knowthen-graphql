@@ -1,10 +1,10 @@
 import { map, groupBy } from 'ramda';
 import DataLoader from 'dataloader';
-import query from './db';
+import query from './db.js';
 
 async function findBooksByIds(ids) {
   const sql = `
-  select * 
+  select *
   from hb.book
   where hb.book.id = ANY($1);
   `;
@@ -28,7 +28,7 @@ export function findBooksByIdsLoader() {
 
 export async function findBookById(id) {
   const sql = `
-  select * 
+  select *
   from hb.book
   where hb.book.id = $1;
   `;
@@ -42,7 +42,7 @@ export async function findBookById(id) {
   }
 }
 
-export async function allBooks() { 
+export async function allBooks() {
   const sql = `
   select * from hb.book;
   `;

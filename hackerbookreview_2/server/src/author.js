@@ -1,10 +1,10 @@
 import { groupBy, map } from 'ramda';
 import DataLoader from 'dataloader';
-import query from './db';
+import query from './db.js';
 
 export async function findAuthorsByBookIds(ids) {
   const sql = `
-  select 
+  select
   hb.author.*,
   hb.book_author.book_id
   from hb.author inner join hb.book_author
@@ -28,7 +28,7 @@ export function findAuthorsByBookIdsLoader() {
 
 export async function authorsByBookId(id) {
   const sql = `
-  select 
+  select
   hb.author.*
   from hb.author inner join hb.book_author
     on hb.author.id = hb.book_author.author_id

@@ -1,7 +1,7 @@
-import { allBooks, imageUrl, findBookById } from './book';
-import { authorsByBookId } from './author';
-import { allReviews } from './review';
- 
+import { allBooks, imageUrl, findBookById } from './book.js';
+import { authorsByBookId } from './author.js';
+import { allReviews } from './review.js';
+
 const resolvers = {
   Book: {
     imageUrl: (book, { size }) => imageUrl(size, book.googleId),
@@ -18,7 +18,7 @@ const resolvers = {
       return findBooksByIdsLoader.load(review.bookId);
       // findBookById(review.bookId)
     }
-  }, 
+  },
   Query: {
     books: () => {
       return allBooks();
