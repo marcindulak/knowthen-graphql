@@ -1,6 +1,6 @@
-import { allBooks, imageUrl, findBookById } from './book.js';
-import { authorsByBookId } from './author.js';
-import { allReviews } from './review.js';
+import { allBooks, imageUrl, findBookById } from './book';
+import { authorsByBookId } from './author';
+import { allReviews } from './review';
 
 const resolvers = {
   Book: {

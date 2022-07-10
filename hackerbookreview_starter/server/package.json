@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ./src/server.js --watch .",
+    "dev": "nodemon --experimental-specifier-resolution=node ./src/server.js --watch .",
     "initdb": "npm run createdb && npm run createschema && npm run loaddata",
     "createdb": "psql -U postgres -f ./database/create_db.sql postgres://database:5432/postgres",
     "createschema": "psql -U postgres -f ./database/schema.sql postgres://database:5432/hackerbook",

@@ -1,4 +1,4 @@
-import { allBooks } from './book.js';
+import { allBooks } from './book';
 
 const resolvers = {
   Book: {

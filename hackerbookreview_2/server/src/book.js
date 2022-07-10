@@ -1,6 +1,6 @@
 import { map, groupBy } from 'ramda';
 import DataLoader from 'dataloader';
-import query from './db.js';
+import query from './db';
 
 async function findBooksByIds(ids) {
   const sql = `

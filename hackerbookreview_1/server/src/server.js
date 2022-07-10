@@ -1,11 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import pkg from 'apollo-server-express';
-const { ApolloServer } = pkg;
+import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { makeExecutableSchema } from '@graphql-tools/schema';
-import typeDefs from './typedefs.js';
-import resolvers from './resolvers.js';
+import typeDefs from './typedefs';
+import resolvers from './resolvers';
 
 const PORT = 4000;
 
