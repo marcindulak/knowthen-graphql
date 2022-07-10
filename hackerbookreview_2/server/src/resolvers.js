@@ -16,7 +16,7 @@ const resolvers = {
       const { loaders } = context;
       const { findBooksByIdsLoader } = loaders;
       return findBooksByIdsLoader.load(review.bookId);
-      // findBookById(review.bookId)
+      // return findBookById(review.bookId);
     }
   },
   Query: {
