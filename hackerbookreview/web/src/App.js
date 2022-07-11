@@ -12,10 +12,10 @@ const App = props => (
     <div className="mw8 center avenir">
       <Header {...props} />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/book/:id/review" component={BookReview} />
-        <Route exact path="/book/:id" component={Book} />
-        <Route exact path="/add" component={AddBook} />
+        <Route exact path="/" element={<Home/>} />
+        <Route exact path="/book/:id/review" element={<BookReview/>} />
+        <Route exact path="/book/:id" element={<Book/>} />
+        <Route exact path="/add" element={<AddBook/>} />
       </Switch>
       <Footer {...props} />
     </div>
