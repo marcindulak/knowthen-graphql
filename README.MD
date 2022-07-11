@@ -1,3 +1,60 @@
+# Personal notes
+
+This is a 2022 update of https://github.com/knowthen/graphql: React 18, Apollo Server 3, GraphQL 16, Node.js 16.
+
+Setup (assumes Ubuntu Linux):
+
+1. Install node
+   ```sh
+   curl -sLo bin/nvm.sh https://github.com/nvm-sh/nvm/raw/master/nvm.sh
+   source bin/nvm.sh
+   nvm install --lts
+   nvm use --lts
+   ```
+
+2. Test the setup
+   ```sh
+   node -e "console.log(process.version)" | grep $(node --version)
+   ```
+
+3. (Optionally) install [vscode](https://code.visualstudio.com/download)
+
+4. Install https://direnv.net/ and enable its hook https://direnv.net/docs/hook.html,
+   then export the `.envrc` variables with
+   ```sh
+   direnv allow
+   ```
+
+5. Install and enable pre-commit
+   ```sh
+   pip install pre-commit
+   pre-commit install
+   ```
+
+6. Keep packages up to date
+   ```sh
+   # Make sure package.json is using the latest components
+   npm install npm-check-updates --include=dev
+   cd helloworld  # or other directory
+   ../node_modules/.bin/ncu -u
+   rm -f package-lock.json
+   npm install
+   ```
+
+7. Modify `/etc/hosts` to refer to the services by name
+   ```sh
+   sudo sed -i "s/127\.0\.0\.1.*$/& database server web/" /etc/hosts
+   ```
+
+8. Install https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
+
+9. When working with the *hackerbookreview* exercises, use docker-compose
+   to start the components
+   ```sh
+   cd hackerbookreview
+   bash ../bin/project-restart.sh
+   ```
+
 # Companion Source for the course: [GraphQL for Beginners with JavaScript](https://courses.knowthen.com/p/graphql-for-beginners-with-javascript/)
 
 **Why should I learn GraphQL?**
@@ -131,51 +188,3 @@ If you’ve got questions, or you’re stuck, you can either:
 **​Why should I take this course from you?**
 
 ​My courses are different from most Instructors.​ I keep things as practical as possible, I try to provide good visuals and animations to help you learn as fast as possible. I put hundreds of hours into making these course, so they are well thought out and to the point... and most importantly, I don't want to waste your time.
-
-# Personal notes
-
-Setup:
-
-1. Install node
-   Note that it is only necessary when developing outside of the devcontainer.
-   ```sh
-   curl -sLo bin/nvm.sh https://github.com/nvm-sh/nvm/raw/master/nvm.sh
-   source bin/nvm.sh
-   nvm install --lts
-   nvm use --lts
-   ```
-
-2. Test the setup
-   ```sh
-   node -e "console.log(process.version)" | grep $(node --version)
-   ```
-
-3. Install [vscode](https://code.visualstudio.com/download).
-
-4. Install and enable pre-commit
-   ```sh
-   pip install pre-commit
-   pre-commit install
-   ```
-5. Keep packages up to date
-   ```sh
-   # Make sure package.json is using the latest components
-   npm install npm-check-updates --include=dev
-   cd helloworld  # or other directory
-   ../node_modules/.bin/ncu -u
-   rm -f package-lock.json
-   npm install
-   ```
-
-6. Modify `/etc/hosts` to refer to the services by name
-   ```sh
-   sudo sed -i "s/127\.0\.0\.1.*$/& database server web/" /etc/hosts
-   ```
-7. Install https://docs.docker.com/get-docker/ and https://docs.docker.com/compose/install/
-
-8. When working with the *hackerbookreview* exercises, use docker-compose
-   to start the components
-   ```sh
-   cd hackerbookreview
-   bash ../bin/project-restart.sh
-   ```
