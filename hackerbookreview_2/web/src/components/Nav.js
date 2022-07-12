@@ -13,7 +13,7 @@ const navLink = R.curry((pathName, className, link) => {
     <NavLink
       to={to}
       key={to}
-      exact
+      end
       activeclassname="fw6 underline"
       className={className}
     >
