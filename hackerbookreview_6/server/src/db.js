@@ -1,9 +1,11 @@
-import { Pool } from 'pg';
+import pkg from 'pg';
+const { Pool } = pkg;
 import humps from 'humps';
 
 const pool = new Pool({
-  host: 'localhost',
+  host: 'database',
   database: 'hackerbook',
+  user: 'postgres'
 });
 
 function logQuery (sql, params) {
