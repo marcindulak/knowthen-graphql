@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import * as R from 'ramda';
 import * as EmailValidator from 'email-validator';
 import { Book, BookReviewForm } from './components/Book';
@@ -41,7 +41,7 @@ class BookReview extends Component {
   }
   handleChange = R.curry((field, value) => {
     const { reviewInput } = this.state;
-    const updatedReviewInput = R.merge(reviewInput, { [field]: value });
+    const updatedReviewInput = R.mergeAll(reviewInput, { [field]: value });
     const inputValid = isInputValid(updatedReviewInput);
     this.setState({ reviewInput: updatedReviewInput, inputValid });
   });
@@ -64,7 +64,7 @@ class BookReview extends Component {
     if (!book) return null;
     return (
       <div className="cf black-80 mv2">
-        {redirect && <Redirect to={`/book/${book.id}`} />}
+        {redirect && <Navigate to={`/book/${book.id}`} />}
         <Error errors={this.state.errors} />
         <h1 className="fw4 mt2 mb3 f2">Review</h1>
         <Book book={book} />
