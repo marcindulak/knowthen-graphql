@@ -41,7 +41,7 @@ class BookReview extends Component {
   }
   handleChange = R.curry((field, value) => {
     const { reviewInput } = this.state;
-    const updatedReviewInput = R.mergeAll(reviewInput, { [field]: value });
+    const updatedReviewInput = R.mergeRight(reviewInput, { [field]: value });
     const inputValid = isInputValid(updatedReviewInput);
     this.setState({ reviewInput: updatedReviewInput, inputValid });
   });
