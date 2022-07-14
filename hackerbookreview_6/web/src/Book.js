@@ -70,7 +70,15 @@ class Book extends Component {
     book: null,
     errors: [],
   };
+  // Prevent double fetch in componentDidMount
+  // https://stackoverflow.com/questions/71755119/reactjs-componentdidmount-executes-twice/71755316#71755316
+  // https://github.com/facebook/react/issues/24502
+  execute = true;
   async componentDidMount() {
+    if (!this.execute) {
+      return;
+    }
+    this.execute = false;
     const id = R.path(['props', 'router', 'params', 'id'], this);
     try {
       // TODO: fetch actual book using graphql
