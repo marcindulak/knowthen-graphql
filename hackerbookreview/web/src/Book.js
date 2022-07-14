@@ -6,6 +6,29 @@ import Error from './components/Error';
 import data from './data';
 import fetch from './fetch';
 
+// https://reactrouter.com/docs/en/v6/getting-started/faq#what-happened-to-withrouter-i-need-it
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+
+function withRouter(Component) {
+  function ComponentWithRouterProp(props) {
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    return (
+      <Component
+        {...props}
+        router={{ location, navigate, params }}
+      />
+    );
+  }
+
+  return ComponentWithRouterProp;
+}
+
 const findBookById = (id, books) => R.find(R.propEq('id', id), books);
 
 const query = `
@@ -47,8 +70,16 @@ class Book extends Component {
     book: null,
     errors: [],
   };
+  // Prevent double fetch in componentDidMount
+  // https://stackoverflow.com/questions/71755119/reactjs-componentdidmount-executes-twice/71755316#71755316
+  // https://github.com/facebook/react/issues/24502
+  execute = true;
   async componentDidMount() {
-    const id = R.path(['props', 'match', 'params', 'id'], this);
+    if (!this.execute) {
+      return;
+    }
+    this.execute = false;
+    const id = R.path(['props', 'router', 'params', 'id'], this);
     try {
       // TODO: fetch actual book using graphql
       const variables = { id };
@@ -76,4 +107,4 @@ class Book extends Component {
   }
 }
 
-export default Book;
+export default withRouter(Book);

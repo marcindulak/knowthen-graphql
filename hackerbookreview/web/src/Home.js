@@ -52,8 +52,16 @@ class Home extends Component {
     )(SORT_BY),
     errors: [],
   };
+  // Prevent double fetch in componentDidMount
+  // https://stackoverflow.com/questions/71755119/reactjs-componentdidmount-executes-twice/71755316#71755316
+  // https://github.com/facebook/react/issues/24502
+  execute = true;
   componentDidMount() {
+    if (!this.execute) {
+      return;
+    }
     this.loadData();
+    this.execute = false;
   }
   async loadData() {
     try {
